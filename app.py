@@ -39,3 +39,10 @@ chain = ConversationalRetrievalChain.from_llm(llm=llm, chain_type='stuff',
                                               memory=memory)
 
 st.title("Mental Health ChatBot 🧑🏽‍⚕️")
+
+
+def conversation_chat(query):
+    result = chain(
+        {"question": query, "chat_history": st.session_state['history']})
+    st.session_state['history'].append((query, result["answer"]))
+    return result["answer"]
