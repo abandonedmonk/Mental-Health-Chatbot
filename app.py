@@ -7,3 +7,7 @@ from langchain.llms import CTransformers
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
+
+# load the pdf
+loader = DirectoryLoader('data/', glob='*.pdf', loader_cls=PyPDFLoader)
+documents = loader.load()
