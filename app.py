@@ -37,3 +37,5 @@ chain = ConversationalRetrievalChain.from_llm(llm=llm, chain_type='stuff',
                                               retriever=vector_store.as_retriever(
                                                   search_kwargs={"k": 2}),
                                               memory=memory)
+
+st.title("Mental Health ChatBot 🧑🏽‍⚕️")
