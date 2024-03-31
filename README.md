@@ -21,6 +21,5 @@ Hugging Face Hub
 Python
 VS Code
 
-Video Demo:
-
-Pictures:
+### Pictures:
+![Screenshot 2024-03-31 225723](https://github.com/abandonedmonk/Mental-Health-Chatbot/assets/66255580/75610853-5772-46e4-8729-8625a98fb0e0)
