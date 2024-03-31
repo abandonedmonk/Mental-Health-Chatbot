@@ -29,3 +29,11 @@ vector_store = FAISS.from_documents(text_chunks, embeddings)
 llm = CTransformers(model="llama-2-7b-chat.ggmlv3.q4_0.bin",
                     model_type="llama",
                     config={'max_new_tokens': 128, 'temperature': 0.01})
+
+memory = ConversationBufferMemory(
+    memory_key="chat_history", return_messages=True)
+
+chain = ConversationalRetrievalChain.from_llm(llm=llm, chain_type='stuff',
+                                              retriever=vector_store.as_retriever(
+                                                  search_kwargs={"k": 2}),
+                                              memory=memory)
