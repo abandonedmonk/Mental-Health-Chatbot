@@ -1,6 +1,6 @@
 # Project Name: PeacefulPal - Mental Heath Chatbot
 
-##Tagline: Your Companion on the Journey to Peace
+## Tagline: Your Companion on the Journey to Peace
 
 ### Problem it solves:
 
