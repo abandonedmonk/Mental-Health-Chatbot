@@ -174,7 +174,6 @@ def display_chat_history():
             st.session_state['generated'].append(output)
 
     if st.session_state['generated']:
-        # with reply_container:
         for i in range(len(st.session_state['generated'])):
             message = st.session_state["generated"][i]
             message = stop_at_word(message, 'Unhelpful')
