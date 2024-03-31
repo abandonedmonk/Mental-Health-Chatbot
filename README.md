@@ -1,4 +1,4 @@
-# Project Name: PeacefulPal - Mental Heath Chatbot
+# Project Name: PeacefulPal - Mental Health Chatbot
 
 ## Tagline: Your Companion on the Journey to Peace
 
@@ -22,4 +22,5 @@ Python
 VS Code
 
 ### Pictures:
+
 ![Screenshot 2024-03-31 225723](https://github.com/abandonedmonk/Mental-Health-Chatbot/assets/66255580/75610853-5772-46e4-8729-8625a98fb0e0)
