@@ -46,3 +46,14 @@ def conversation_chat(query):
         {"question": query, "chat_history": st.session_state['history']})
     st.session_state['history'].append((query, result["answer"]))
     return result["answer"]
+
+
+def initialize_session_state():
+    if 'history' not in st.session_state:
+        st.session_state['history'] = []
+
+    if 'generated' not in st.session_state:
+        st.session_state['generated'] = ["Hello! Ask me anything about 🤗"]
+
+    if 'past' not in st.session_state:
+        st.session_state['past'] = ["Hey! 👋"]
