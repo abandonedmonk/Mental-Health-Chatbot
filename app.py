@@ -39,10 +39,44 @@ chain = ConversationalRetrievalChain.from_llm(llm=llm, chain_type='stuff',
                                                   search_kwargs={"k": 2}),
                                               memory=memory)
 
+
+# Purpose:
+# ---
+# This script initializes a Streamlit application to run a Mental Health ChatBot.
+# It loads documents, preprocesses them, creates embeddings, sets up a conversational retrieval chain,
+# and provides a user interface for interacting with the ChatBot.
+
+# Input Arguments:
+# ---
+# None
+
+# Returns:
+# ---
+# None
+
+# Example call:
+# ---
+# The script is meant to be run as a Streamlit application.
 st.title("Mental Health ChatBot 🧑🏽‍⚕️")
 st.write(css, unsafe_allow_html=True)
 
 
+# Purpose:
+# ---
+# This function stops at a specified word in an input string and returns the string up to that word.
+
+# Input Arguments:
+# ---
+# `input_string`: The input string to be processed.
+# `stop_word`: The word at which to stop processing the input string.
+
+# Returns:
+# ---
+# `result`: The processed string up to the stop word.
+
+# Example call:
+# ---
+# processed_text = stop_at_word(input_string, 'stop_word')
 def stop_at_word(input_string, stop_word):
     words = input_string.split()
     result = []
@@ -53,6 +87,22 @@ def stop_at_word(input_string, stop_word):
     return ' '.join(result)
 
 
+# Purpose:
+# ---
+# This function handles the conversation between the user and the ChatBot.
+# It queries the conversational retrieval chain and updates the session state with the conversation history.
+
+# Input Arguments:
+# ---
+# `query`: The user's query or message.
+
+# Returns:
+# ---
+# `result['answer']`: The ChatBot's response to the user's query.
+
+# Example call:
+# ---
+# response = conversation_chat(user_query)
 def conversation_chat(query):
     result = chain(
         {"question": query, "chat_history": st.session_state['history']})
@@ -61,6 +111,22 @@ def conversation_chat(query):
     return result['answer']
 
 
+# Purpose:
+# ---
+# This function initializes the session state for the Streamlit application.
+# It initializes session variables such as chat history and past interactions.
+
+# Input Arguments:
+# ---
+# None
+
+# Returns:
+# ---
+# None
+
+# Example call:
+# ---
+# initialize_session_state()
 def initialize_session_state():
     if 'history' not in st.session_state:
         st.session_state['history'] = []
@@ -75,6 +141,22 @@ def initialize_session_state():
     st.session_state['past'] = []
 
 
+# Purpose:
+# ---
+# This function displays the chat history in the Streamlit application.
+# It allows users to input questions and see the conversation history with the ChatBot.
+
+# Input Arguments:
+# ---
+# None
+
+# Returns:
+# ---
+# None
+
+# Example call:
+# ---
+# display_chat_history()
 def display_chat_history():
     reply_container = st.container()
     container = st.container()
