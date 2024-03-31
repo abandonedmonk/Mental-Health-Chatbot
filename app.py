@@ -24,3 +24,8 @@ embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-
 
 # vectorstore
 vector_store = FAISS.from_documents(text_chunks, embeddings)
+
+# create llm
+llm = CTransformers(model="llama-2-7b-chat.ggmlv3.q4_0.bin",
+                    model_type="llama",
+                    config={'max_new_tokens': 128, 'temperature': 0.01})
