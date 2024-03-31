@@ -9,5 +9,11 @@ from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 
 # load the pdf
-loader = DirectoryLoader('data/', glob='*.pdf', loader_cls=PyPDFLoader)
+pdf_path = 'data/'
+loader = DirectoryLoader(pdf_path, glob='*.pdf', loader_cls=PyPDFLoader)
 documents = loader.load()
+
+# split text into chunks
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500, chunk_overlap=50)
+text_chunks = text_splitter.split_documents(documents)
