@@ -44,36 +44,21 @@ st.write(css, unsafe_allow_html=True)
 
 
 def stop_at_word(input_string, stop_word):
-    words = input_string.split()  # Split the string into words
-    result = []  # Initialize an empty list to store words
+    words = input_string.split()
+    result = []
     for word in words:
-        if word == stop_word:  # Check if the word is the stop word
-            break  # Stop processing when the stop word is encountered
-        result.append(word)  # Append the word to the result list
-    return ' '.join(result)  # Join the words back into a string
+        if word == stop_word:
+            break
+        result.append(word)
+    return ' '.join(result)
 
 
 def conversation_chat(query):
     result = chain(
         {"question": query, "chat_history": st.session_state['history']})
     st.session_state['history'].append((query, result["answer"]))
-    # st.write(result)
-
     st.session_state.chat_history = result['answer']
-    # for i, message in enumerate(st.session_state.chat_history):
-    #     message = stop_at_word(message, 'Unhelpful')
-    # # if i % 2 == 0:
-    # #     st.write(user_template.replace(
-    # #         "{{MSG}}", message), unsafe_allow_html=True)
-    # # else:
-    # st.write(bot_template.replace(
-    #     "{{MSG}}", message), unsafe_allow_html=True)
-
-    # st.write(result)
-    # st.write(bot_template.replace(
-    #     "{{MSG}}", result), unsafe_allow_html=True)
     return result['answer']
-    # return result["answer"]
 
 
 def initialize_session_state():
@@ -88,12 +73,6 @@ def initialize_session_state():
 
     st.session_state['generated'] = []
     st.session_state['past'] = []
-
-    # if 'generated' not in st.session_state:
-    #     st.session_state['generated'] = ["Hello! Ask me anything about 🤗"]
-
-    # if 'past' not in st.session_state:
-    #     st.session_state['past'] = ["Hey! 👋"]
 
 
 def display_chat_history():
@@ -115,10 +94,6 @@ def display_chat_history():
     if st.session_state['generated']:
         # with reply_container:
         for i in range(len(st.session_state['generated'])):
-            #         message(st.session_state["past"][i], is_user=True, key=str(
-            #             i) + '_user', avatar_style="thumbs")
-            #         message(st.session_state["generated"][i],
-            #                 key=str(i), avatar_style="fun-emoji")
             message = st.session_state["generated"][i]
             message = stop_at_word(message, 'Unhelpful')
             st.write(user_template.replace(
